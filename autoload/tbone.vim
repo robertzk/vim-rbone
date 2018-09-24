@@ -352,6 +352,39 @@ function! tbone#write_command(bang, line1, line2, count, ...) abort
   endtry
 endfunction
 
+function! tbone#write_commit_command(bang, line1, line2, count, ...) abort
+  let target = a:0 ? a:1 : get(g:, 'tbone_write_pane', '')
+  if empty(target)
+    return 'echoerr '.string('Target pane required')
+  endif
+
+  " The difference between write and write_commit is that we add a 'git add .'
+  " and git commit to the written message.
+  let keys = join(filter(map(map(
+        \ getline(a:line1, a:line2),
+        \ 'substitute(v:val,"^\\s*","git add .; git commit -m ''","")'),
+        \ 'substitute(v:val,"\\s*$","''\r","")'),
+        \ "!empty(v:val)"),
+        \ "\r")
+  " We also remove the current line, which is assumed to be the commit
+  " message, and save the file.
+  exe a:line1 . 'd'
+  exe 'w!'
+
+  if a:count > 0
+    let keys = get(g:, 'tbone_write_initialization', '').keys."\r"
+  endif
+
+  try
+    let pane_id = tbone#send_keys(target, keys)
+    let g:tbone_write_pane = pane_id
+    echo len(keys).' keys sent to '.pane_id
+    return ''
+  catch /.*/
+    return 'echoerr '.string(v:exception)
+  endtry
+endfunction
+
 function! tbone#send_keys(target, keys) abort
   if empty(a:target)
     throw 'Target pane required'

@@ -9,6 +9,10 @@ Basic tmux support for Vim.
 * `:Twrite` sends a chunk of text to another pane.  Give an argument like
   `windowtitle.2`, `top-right`, or `last`, or let it default to the previously
   given argument.
+* `:Tcommitwrite` sends a line as the commit message for the given file to an adjacent pane.
+   Give an argument like `windowtitle.2`, `top-right`, or `last`, or let it default to the previously
+   given argument. The current line in the editor will be remove and used as
+   the commit message.
 * `:Tattach` lets you use a specific tmux session from outside of it.
 
 Would you like to paste a shell command into another pane over and over again?
