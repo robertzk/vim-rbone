@@ -1,5 +1,6 @@
-# tbone.vim
+# rbone.vim
 
+*Editor's note*: This is an augmented version of the original [tbone](https://github.com/tpope/vim-tbone) by tpope.
 Basic tmux support for Vim.
 
 * `:Tmux` lets you call any old `tmux` command (with really good tab
@@ -21,21 +22,13 @@ installing [pathogen.vim](https://github.com/tpope/vim-pathogen), and
 then simply copy and paste:
 
     cd ~/.vim/bundle
-    git clone git://github.com/tpope/vim-tbone.git
+    git clone git://github.com/tpope/vim-rbone.git
 
 Once help tags have been generated, you can view the manual with
-`:help tbone`.
-
-## Self-Promotion
-
-Like tbone.vim?  Follow the repository on
-[GitHub](https://github.com/tpope/vim-tbone) and vote for it on
-[vim.org](http://www.vim.org/scripts/script.php?script_id=4488).  And if
-you're feeling especially charitable, follow [tpope](http://tpo.pe/) on
-[Twitter](http://twitter.com/tpope) and
-[GitHub](https://github.com/tpope).
+`:help rbone`.
 
 ## License
 
-Copyright © Tim Pope.  Distributed under the same terms as Vim itself.
+Copyright © Robert Krzyzanowski, Tim Pope.  Distributed under the same terms as Vim itself.
 See `:help license`.
+
