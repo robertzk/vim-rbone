@@ -369,7 +369,7 @@ function! tbone#write_commit_command(bang, line1, line2, count, ...) abort
   " We also remove the current line, which is assumed to be the commit
   " message, and save the file.
   exe a:line1 . 'd'
-  exe 'w!'
+  exe 'silent w!'
 
   if a:count > 0
     let keys = get(g:, 'tbone_write_initialization', '').keys."\r"
