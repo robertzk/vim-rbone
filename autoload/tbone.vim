@@ -333,9 +333,11 @@ function! tbone#write_command(bang, line1, line2, count, ...) abort
     return 'echoerr '.string('Target pane required')
   endif
 
+  " Removed from line 340
+  " \ 'substitute(v:val,"^\\s*","","")'),
   let keys = join(filter(map(
         \ getline(a:line1, a:line2),
-        \ 'substitute(v:val,"^\\s*","","")'),
+        \ 'v:val'),
         \ "!empty(v:val)"),
         \ "\r")
   if a:count > 0
